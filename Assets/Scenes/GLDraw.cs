@@ -12,14 +12,13 @@ public class GLDraw : MonoBehaviour
 		 GL.PushMatrix();
 		 material.SetPass(0);
          GL.Begin(GL.LINES);
-        //Métodos com valor = dimensões variáveis
-        //GeraQuadrado(5);
-        //GeraTrianguloEquilatero(5, 5);
-        //GeraHexagono(5);
-        //GeraAlmaco(5);
-        // Métodos com valor = dimensões variáveis
 
-        GeraX();
+        GeraQuadrado(5);
+        GeraTrianguloEquilatero(5);
+        GeraHexagono(5);
+        GeraAlmaco(5);
+
+        GeraX(5);
         GeraSetaDireita();
         GeraCantoEsquerdo();
         GeraEstrela();
@@ -27,168 +26,88 @@ public class GLDraw : MonoBehaviour
         GeraQuadradoComNum7();
         GeraHexagonoComNum4();
         GeraEstrelaComNum1();
-        GeraFormas();
+        GeraPisoQuadrado();
+        GeraCubo();
+        GeraDesenhoCasa();
         
         GL.End();
         GL.PopMatrix();
 	}
 
-    private void GeraFormas()
+    private void GeraDesenhoCasa()
     {
-        //QUADRADO CONCENTRICO
-        //GL.Vertex(new Vector3(0, 0));
-        //GL.Vertex(new Vector3(5, 0));
-        //GL.Vertex(new Vector3(5, 0));
-        //GL.Vertex(new Vector3(5, 5));
-        //GL.Vertex(new Vector3(5, 5));
-        //GL.Vertex(new Vector3(0, 5));
-        //GL.Vertex(new Vector3(0, 0));
-        //GL.Vertex(new Vector3(0, 5));
-        //GL.Vertex(new Vector3(1, 1));
-        //GL.Vertex(new Vector3(4, 1));
-        //GL.Vertex(new Vector3(4, 1));
-        //GL.Vertex(new Vector3(4, 4));
-        //GL.Vertex(new Vector3(4, 4));
-        //GL.Vertex(new Vector3(1, 4));
-        //GL.Vertex(new Vector3(1, 1));
-        //GL.Vertex(new Vector3(1, 4));
-        //GL.Vertex(new Vector3(0, 0));
-        //GL.Vertex(new Vector3(1, 1));
-        //GL.Vertex(new Vector3(0, 5));
-        //GL.Vertex(new Vector3(1, 4));
-        //GL.Vertex(new Vector3(5, 5));
-        //GL.Vertex(new Vector3(4, 4));
-        //GL.Vertex(new Vector3(5, 0));
-        //GL.Vertex(new Vector3(4, 1));
-        // QUADRADO DOS VENTOS
-        //GL.Vertex(new Vector3(0, 2.5f));
-        //GL.Vertex(new Vector3(1, 2));
-        //GL.Vertex(new Vector3(1, 2));
-        //GL.Vertex(new Vector3(1, 2.2f));
-        //GL.Vertex(new Vector3(1, 2.2f));
-        //GL.Vertex(new Vector3(3, 2.2f));
-        //GL.Vertex(new Vector3(3, 2.2f));
-        //GL.Vertex(new Vector3(3, 1));
-        //GL.Vertex(new Vector3(3, 1));
-        //GL.Vertex(new Vector3(4, 1));
-        //GL.Vertex(new Vector3(4, 1));
-        //GL.Vertex(new Vector3(4, -1));
-        //GL.Vertex(new Vector3(4, -1));
-        //GL.Vertex(new Vector3(3.8f, -1));
-        //GL.Vertex(new Vector3(3.8f, -1));
-        //GL.Vertex(new Vector3(4.5f, -2));
-        //GL.Vertex(new Vector3(4.5f, -2));
-        //GL.Vertex(new Vector3(5.2f, -1));
-        //GL.Vertex(new Vector3(5.2f, -1));
-        //GL.Vertex(new Vector3(5, -1));
-        //GL.Vertex(new Vector3(5, -1));
-        //GL.Vertex(new Vector3(5, 1));
-        //GL.Vertex(new Vector3(5, 1));
-        //GL.Vertex(new Vector3(6, 1));
-        //GL.Vertex(new Vector3(6, 1));
-        //GL.Vertex(new Vector3(6, 2.2f));
-        //GL.Vertex(new Vector3(6, 2.2f));
-        //GL.Vertex(new Vector3(8, 2.2f));
-        //GL.Vertex(new Vector3(8, 2.2f));
-        //GL.Vertex(new Vector3(8, 2));
-        //GL.Vertex(new Vector3(8, 2));
-        //GL.Vertex(new Vector3(9, 2.5f));
-        //GL.Vertex(new Vector3(9, 2.5f));
-        //GL.Vertex(new Vector3(8, 3));
-        //GL.Vertex(new Vector3(8, 3));
-        //GL.Vertex(new Vector3(8, 2.8f));
-        //GL.Vertex(new Vector3(8, 2.8f));
-        //GL.Vertex(new Vector3(6, 2.8f));
-        //GL.Vertex(new Vector3(6, 2.8f));
-        //GL.Vertex(new Vector3(6, 4));
-        //GL.Vertex(new Vector3(6, 4));
-        //GL.Vertex(new Vector3(5.2f, 4));
-        //GL.Vertex(new Vector3(5.2f, 4));
-        //GL.Vertex(new Vector3(5.2f, 6));
-        //GL.Vertex(new Vector3(5.2f, 6));
-        //GL.Vertex(new Vector3(5.4f, 6));
-        //GL.Vertex(new Vector3(5.4f, 6));
-        //GL.Vertex(new Vector3(4.5f, 7));
-        //GL.Vertex(new Vector3(4.5f, 7));
-        //GL.Vertex(new Vector3(3.8f, 6));
-        //GL.Vertex(new Vector3(3.8f, 6));
-        //GL.Vertex(new Vector3(4, 6));
-        //GL.Vertex(new Vector3(4, 6));
-        //GL.Vertex(new Vector3(4, 4));
-        //GL.Vertex(new Vector3(4, 4));
-        //GL.Vertex(new Vector3(3, 4));
-        //GL.Vertex(new Vector3(3, 4));
-        //GL.Vertex(new Vector3(3, 2.8f));
-        //GL.Vertex(new Vector3(3, 2.8f));
-        //GL.Vertex(new Vector3(1, 2.8f));
-        //GL.Vertex(new Vector3(1, 2.8f));
-        //GL.Vertex(new Vector3(1, 3f));
-        //GL.Vertex(new Vector3(1, 3f));
-        //GL.Vertex(new Vector3(0, 2.5f));
-
-        // CUBO
-        //GeraQuadrado(5);
-        //GL.Vertex(new Vector3(5, 0));
-        //GL.Vertex(new Vector3(6, 1));
-        //GL.Vertex(new Vector3(6, 1));
-        //GL.Vertex(new Vector3(6, 6));
-        //GL.Vertex(new Vector3(6, 6));
-        //GL.Vertex(new Vector3(5, 5));
-        //GL.Vertex(new Vector3(1, 6));
-        //GL.Vertex(new Vector3(0, 5));
-        //GL.Vertex(new Vector3(1, 6));
-        //GL.Vertex(new Vector3(6, 6));
-
-        // CASA NO QUADRADO
-        //GeraQuadrado(5);
-        //GL.Vertex(new Vector3(3.5f, 3.5f));
-        //GL.Vertex(new Vector3(3.5f, 4));
-        //GL.Vertex(new Vector3(3.5f, 4));
-        //GL.Vertex(new Vector3(3.8f, 4));
-        //GL.Vertex(new Vector3(3.8f, 4));
-        //GL.Vertex(new Vector3(3.8f, 3.4f));
-        //GL.Vertex(new Vector3(4.5f, 3));
-        //GL.Vertex(new Vector3(2.5f, 4));
-        //GL.Vertex(new Vector3(2.5f, 4));
-        //GL.Vertex(new Vector3(0.5f, 3));
-        //GL.Vertex(new Vector3(0.5f, 3));
-        //GL.Vertex(new Vector3(4.5f, 3));
-        //GL.Vertex(new Vector3(1, 1));
-        //GL.Vertex(new Vector3(4, 1));
-        //GL.Vertex(new Vector3(4, 1));
-        //GL.Vertex(new Vector3(4, 3));
-        //GL.Vertex(new Vector3(1, 3));
-        //GL.Vertex(new Vector3(1, 1));
-        //GL.Vertex(new Vector3(2.3f, 1));
-        //GL.Vertex(new Vector3(2.3f, 2));
-        //GL.Vertex(new Vector3(2.3f, 2));
-        //GL.Vertex(new Vector3(2.6f, 2));
-        //GL.Vertex(new Vector3(2.6f, 2));
-        //GL.Vertex(new Vector3(2.6f, 1));
+        GeraQuadrado(5);
+        GL.Vertex(new Vector3(3.5f, 3.5f));
+        GL.Vertex(new Vector3(3.5f, 4));
+        GL.Vertex(new Vector3(3.5f, 4));
+        GL.Vertex(new Vector3(3.8f, 4));
+        GL.Vertex(new Vector3(3.8f, 4));
+        GL.Vertex(new Vector3(3.8f, 3.4f));
+        GL.Vertex(new Vector3(4.5f, 3));
+        GL.Vertex(new Vector3(2.5f, 4));
+        GL.Vertex(new Vector3(2.5f, 4));
+        GL.Vertex(new Vector3(0.5f, 3));
+        GL.Vertex(new Vector3(0.5f, 3));
+        GL.Vertex(new Vector3(4.5f, 3));
+        GL.Vertex(new Vector3(1, 1));
+        GL.Vertex(new Vector3(4, 1));
+        GL.Vertex(new Vector3(4, 1));
+        GL.Vertex(new Vector3(4, 3));
+        GL.Vertex(new Vector3(1, 3));
+        GL.Vertex(new Vector3(1, 1));
+        GL.Vertex(new Vector3(2.3f, 1));
+        GL.Vertex(new Vector3(2.3f, 2));
+        GL.Vertex(new Vector3(2.3f, 2));
+        GL.Vertex(new Vector3(2.6f, 2));
+        GL.Vertex(new Vector3(2.6f, 2));
+        GL.Vertex(new Vector3(2.6f, 1));
     }
 
-    private void GeraEstrelaComNum1()
+    private void GeraCubo()
+    {
+        GeraQuadrado(5);
+        GL.Vertex(new Vector3(5, 0));
+        GL.Vertex(new Vector3(6, 1));
+        GL.Vertex(new Vector3(6, 1));
+        GL.Vertex(new Vector3(6, 6));
+        GL.Vertex(new Vector3(6, 6));
+        GL.Vertex(new Vector3(5, 5));
+        GL.Vertex(new Vector3(1, 6));
+        GL.Vertex(new Vector3(0, 5));
+        GL.Vertex(new Vector3(1, 6));
+        GL.Vertex(new Vector3(6, 6));
+    }
+
+    private void GeraPisoQuadrado()
     {
         GL.Vertex(new Vector3(0, 0));
-        GL.Vertex(new Vector3(2.5f, 1.5f));
-        GL.Vertex(new Vector3(2.5f, 1.5f));
         GL.Vertex(new Vector3(5, 0));
         GL.Vertex(new Vector3(5, 0));
-        GL.Vertex(new Vector3(4, 3));
-        GL.Vertex(new Vector3(4, 3));
-        GL.Vertex(new Vector3(6, 4));
-        GL.Vertex(new Vector3(6, 4));
-        GL.Vertex(new Vector3(3.5f, 4));
-        GL.Vertex(new Vector3(3.5f, 4));
-        GL.Vertex(new Vector3(2.5f, 5));
-        GL.Vertex(new Vector3(2.5f, 5));
-        GL.Vertex(new Vector3(1.5f, 4));
-        GL.Vertex(new Vector3(1.5f, 4));
-        GL.Vertex(new Vector3(-1, 4));
-        GL.Vertex(new Vector3(-1, 4));
-        GL.Vertex(new Vector3(1, 3));
-        GL.Vertex(new Vector3(1, 3));
+        GL.Vertex(new Vector3(5, 5));
+        GL.Vertex(new Vector3(5, 5));
+        GL.Vertex(new Vector3(0, 5));
         GL.Vertex(new Vector3(0, 0));
+        GL.Vertex(new Vector3(0, 5));
+        GL.Vertex(new Vector3(1, 1));
+        GL.Vertex(new Vector3(4, 1));
+        GL.Vertex(new Vector3(4, 1));
+        GL.Vertex(new Vector3(4, 4));
+        GL.Vertex(new Vector3(4, 4));
+        GL.Vertex(new Vector3(1, 4));
+        GL.Vertex(new Vector3(1, 1));
+        GL.Vertex(new Vector3(1, 4));
+        GL.Vertex(new Vector3(0, 0));
+        GL.Vertex(new Vector3(1, 1));
+        GL.Vertex(new Vector3(0, 5));
+        GL.Vertex(new Vector3(1, 4));
+        GL.Vertex(new Vector3(5, 5));
+        GL.Vertex(new Vector3(4, 4));
+        GL.Vertex(new Vector3(5, 0));
+        GL.Vertex(new Vector3(4, 1));
+    }
+    private void GeraEstrelaComNum1()
+    {
+        GeraEstrela();
         GL.Vertex(new Vector3(2.5f, 2));
         GL.Vertex(new Vector3(2.5f, 4));
         GL.Vertex(new Vector3(2.5f, 4));
@@ -198,18 +117,7 @@ public class GLDraw : MonoBehaviour
 
     private void GeraHexagonoComNum4()
     {
-        GL.Vertex(new Vector3(1, 0));
-        GL.Vertex(new Vector3(4, 0));
-        GL.Vertex(new Vector3(4, 0));
-        GL.Vertex(new Vector3(5, 2.5f));
-        GL.Vertex(new Vector3(5, 2.5f));
-        GL.Vertex(new Vector3(4, 5));
-        GL.Vertex(new Vector3(4, 5));
-        GL.Vertex(new Vector3(1, 5));
-        GL.Vertex(new Vector3(1, 5));
-        GL.Vertex(new Vector3(0, 2.5f));
-        GL.Vertex(new Vector3(0, 2.5f));
-        GL.Vertex(new Vector3(1, 0));
+        GeraHexagono(5);
         GL.Vertex(new Vector3(3, 1.5f));
         GL.Vertex(new Vector3(3, 3.5f));
         GL.Vertex(new Vector3(3, 3.5f));
@@ -332,32 +240,47 @@ public class GLDraw : MonoBehaviour
         GL.Vertex(new Vector3(4, 2));
     }
 
-    private void GeraX()
+    private void GeraX(float altura)
     {
-        GL.Vertex(new Vector3(1, 0));
-        GL.Vertex(new Vector3(2.5f, 1));
-        GL.Vertex(new Vector3(2.5f, 1));
-        GL.Vertex(new Vector3(4, 0));
-        GL.Vertex(new Vector3(4, 0));
-        GL.Vertex(new Vector3(5, 1));
-        GL.Vertex(new Vector3(5, 1));
-        GL.Vertex(new Vector3(4, 2.5f));
-        GL.Vertex(new Vector3(4, 2.5f));
-        GL.Vertex(new Vector3(5, 4));
-        GL.Vertex(new Vector3(5, 4));
-        GL.Vertex(new Vector3(4, 5));
-        GL.Vertex(new Vector3(4, 5));
-        GL.Vertex(new Vector3(2.5f, 4));
-        GL.Vertex(new Vector3(2.5f, 4));
-        GL.Vertex(new Vector3(1, 5));
-        GL.Vertex(new Vector3(1, 5));
-        GL.Vertex(new Vector3(0, 4));
-        GL.Vertex(new Vector3(0, 4));
-        GL.Vertex(new Vector3(1, 2.5f));
-        GL.Vertex(new Vector3(1, 2.5f));
-        GL.Vertex(new Vector3(0, 1));
-        GL.Vertex(new Vector3(0, 1));
-        GL.Vertex(new Vector3(1, 0));
+
+        GL.Vertex(new Vector3((altura/2) - (altura/4),0));
+        GL.Vertex(new Vector3((altura / 2) , (altura / 2) - (altura / 4)));
+
+        GL.Vertex(new Vector3((altura / 2), (altura / 2) - (altura / 4)));
+        GL.Vertex(new Vector3((altura / 2) + (altura / 4), 0));
+
+        GL.Vertex(new Vector3((altura / 2) + (altura / 4), 0));
+        GL.Vertex(new Vector3(altura, altura/4));
+
+        GL.Vertex(new Vector3(altura, altura / 4));
+        GL.Vertex(new Vector3((altura/2) + (altura/4), altura / 2));
+
+        GL.Vertex(new Vector3((altura / 2) + (altura / 4), altura / 2));
+        GL.Vertex(new Vector3(altura, altura - (altura / 4)));
+
+        GL.Vertex(new Vector3(altura, altura - (altura / 4)));
+        GL.Vertex(new Vector3(altura-(altura/4), altura ));
+
+        GL.Vertex(new Vector3(altura - (altura / 4), altura));
+        GL.Vertex(new Vector3(altura/2 , altura-(altura/4)));
+
+        GL.Vertex(new Vector3(altura / 2, altura - (altura / 4)));
+        GL.Vertex(new Vector3(altura / 2 - (altura/4), altura));
+
+        GL.Vertex(new Vector3(altura / 2 - (altura / 4), altura));
+        GL.Vertex(new Vector3(0, altura - (altura / 4)));
+
+        GL.Vertex(new Vector3(0, altura - (altura / 4)));
+        GL.Vertex(new Vector3((altura/2) - (altura/4), altura/2));
+
+        GL.Vertex(new Vector3((altura / 2) - (altura / 4), altura / 2));
+        GL.Vertex(new Vector3(0, altura / 4));
+
+        GL.Vertex(new Vector3(0, altura / 4));
+        GL.Vertex(new Vector3(altura/4, 0));
+
+
+
     }
 
     private void GeraAlmaco(float lado)
