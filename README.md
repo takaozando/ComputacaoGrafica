@@ -1,1 +1,2 @@
 # ComputacaoGrafica
+Primitivas com OpenGL
