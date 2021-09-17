@@ -4,20 +4,25 @@ using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Gerador de formas primitivas
+/// Alterar de private para int para habilitar opção na unity
+/// </summary>
 public class GLDraw : MonoBehaviour
 {
     public Material material;
     public int tamanho=5;
-    public int opcao=0;
-
+    private int opcao=0;
+    public int op2 = 0;
+    public float centerx = 0;
+    public float centery = 0;
     
     private void OnPostRender()
     {
 		 GL.PushMatrix();
 		 material.SetPass(0);
          GL.Begin(GL.LINES);
-
+        ///Atividade 01
         switch (opcao)
         {
             case 1:
@@ -68,8 +73,33 @@ public class GLDraw : MonoBehaviour
             default:
                 break;
         }
+        ///Atividade 02
+        switch (op2)
+        {
+            case 1:
+                GeraCirculo(tamanho,new Vector3(centerx,centery));
+                break;
+            case 2:
+                GeraCilindro(tamanho);
+                break;
+            case 3:
+                //Pendente linha diagonal
+                //GeraProibido(tamanho);
+                break;
+            case 4:
+                GeraComprimido(tamanho);
+                break;
+            case 5:
 
-        GL.End();
+                break;
+            case 6:
+
+                break;
+            case 7:
+
+                break;
+        }
+                GL.End();
         GL.PopMatrix();
 	}
 
@@ -420,12 +450,9 @@ public class GLDraw : MonoBehaviour
         GL.Vertex3(0, lado, 0);
     }
 
-    public void GeraCirculo(float tamanho)
+    public void GeraCirculo(float tamanho,Vector3 center)
     {
-        Vector3 center = new Vector3(0, 0, 0);
-        GL.PushMatrix();
-        material.SetPass(0);
-        GL.Color(Color.red);
+    
         GL.Begin(GL.LINES);
 
         for (var t = 0.0f; t < (2 * Mathf.PI); t += 0.01f)
@@ -433,6 +460,63 @@ public class GLDraw : MonoBehaviour
             Vector3 ci = (new Vector3(Mathf.Cos(t) * tamanho + center.x, Mathf.Sin(t) * tamanho + center.y, center.z));
             GL.Vertex3(ci.x, ci.y, ci.z);
         }
+        GL.End();
 
+    }
+    public void GeraCilindro(float tamanho)
+    { 
+        GL.Begin(GL.LINES);
+        Vector3 center = new Vector3(tamanho, tamanho);
+        tamanho = tamanho / 2;
+        for (var t = 0.0f; t < (2 * Mathf.PI); t += 0.01f)
+        {
+            Vector3 ci = (new Vector3(Mathf.Cos(t) * tamanho + center.x, Mathf.Sin(t) * (tamanho/2) + center.y, center.z));
+            GL.Vertex3(ci.x, ci.y, ci.z);
+        }
+        GL.End();
+        GL.Begin(GL.LINES);
+
+
+        GL.Vertex(new Vector3(Mathf.Cos(0) * - tamanho + center.x, 0));
+        GL.Vertex(new Vector3(Mathf.Cos(0) * - tamanho + center.x, tamanho*2));
+
+        center.y = 0 ;
+
+        for (var t = 0.0f; t < (Mathf.PI); t += 0.01f)
+        {
+            Vector3 ci = (new Vector3(Mathf.Cos(t) * -tamanho + center.x, Mathf.Sin(t) * (-tamanho / 2) + center.y, center.z));
+            GL.Vertex3(ci.x, ci.y, ci.z);
+        }
+
+        GL.Vertex(new Vector3(Mathf.Cos((float)Math.PI) * -tamanho + center.x, tamanho * 2));
+
+        GL.End();
+    }
+    ///Pendente
+    //public void GeraProibido(float tamanho)
+    //{
+    //    GeraCirculo(tamanho,new Vector3(tamanho,tamanho));
+    //    GL.Vertex(new Vector3(Mathf.Cos(135) * tamanho , Mathf.Sin(135)));
+    //    GL.Vertex(new Vector3( Mathf.Cos(225) * tamanho , Mathf.Sin(225)));
+    //}
+
+    public void GeraComprimido(float tamanho)
+    {
+        GeraCirculo(tamanho, new Vector3(centerx, centery));
+
+        GL.Begin(GL.LINES);
+        GL.Vertex(new Vector3(centerx, centery));
+        GL.Vertex(new Vector3(centerx, centery +(tamanho)));
+
+        GL.Vertex(new Vector3(centerx, centery));
+        GL.Vertex(new Vector3(centerx, centery - (tamanho)));
+
+        GL.Vertex(new Vector3(centerx-tamanho, centery));
+        GL.Vertex(new Vector3(centerx+tamanho, centery));
+
+
+        GL.End();
+        //GL.Vertex(new Vector3(tamanho, tamanho + (tamanho / 2)));
+        //GL.Vertex(new Vector3(tamanho, tamanho + (tamanho / 2)));
     }
 }
