@@ -524,9 +524,9 @@ public class GLDraw : MonoBehaviour
     public void GeraRosto(float tamanho)
     {
         GeraCirculo(tamanho, new Vector3(centerx, centery));
-        GeraCirculo(tamanho/5, new Vector3(tamanho/4+centerx, tamanho/2+centery));
-        GeraCirculo(tamanho / 5, new Vector3(tamanho / 4-(tamanho/2)+centerx, tamanho / 2+centery));
-        GeraSemicirculo(tamanho,new Vector3(centerx,centery));
+        GeraCirculo(tamanho / 5, new Vector3(tamanho / 4 + centerx, tamanho / 2 + centery));
+        GeraCirculo(tamanho / 5, new Vector3(tamanho / 4 - (tamanho / 2) + centerx, tamanho / 2 + centery));
+        GeraSemicirculo(tamanho/2,new Vector3(centerx,centery+(tamanho/3)));
     }
     
     public void GeraElipse(float tamanho)
@@ -539,11 +539,13 @@ public class GLDraw : MonoBehaviour
     }
     public void GeraSemicirculo(float tamanho, Vector3 center)
     {
+        GL.Begin(GL.LINES);
         for (var t = 0.0f; t < (Mathf.PI); t += 0.01f)
         {
             Vector3 ci = (new Vector3(Mathf.Cos(t) * -tamanho + center.x, Mathf.Sin(t) * (-tamanho / 2) + center.y));
             GL.Vertex3(ci.x, ci.y, ci.z);
         }
+        GL.End();
     }
     #endregion
 }
