@@ -22,7 +22,8 @@ public class GLDraw : MonoBehaviour
 		 GL.PushMatrix();
 		 material.SetPass(0);
          GL.Begin(GL.LINES);
-        ///Atividade 01
+        
+        #region switchAtividade01
         switch (opcao)
         {
             case 1:
@@ -73,7 +74,8 @@ public class GLDraw : MonoBehaviour
             default:
                 break;
         }
-        ///Atividade 02
+        #endregion
+        #region switchAtividade02
         switch (op2)
         {
             case 1:
@@ -90,19 +92,21 @@ public class GLDraw : MonoBehaviour
                 GeraComprimido(tamanho);
                 break;
             case 5:
-
+                GeraRosto(tamanho);
                 break;
             case 6:
 
                 break;
             case 7:
-
+                GeraSemicirculo(tamanho,new Vector3(centerx,centery));
                 break;
         }
                 GL.End();
         GL.PopMatrix();
 	}
+    #endregion
 
+    #region Métodos Atividade01
     private void GeraDesenhoCasa()
     {
         GeraQuadrado(5);
@@ -432,7 +436,9 @@ public class GLDraw : MonoBehaviour
 
 
     }
-    
+
+    #endregion
+    #region Metodos Atividade02
     public void GeraQuadrado2(float lado)
     {
         GL.Vertex3(0, 0, 0);
@@ -468,14 +474,10 @@ public class GLDraw : MonoBehaviour
         GL.Begin(GL.LINES);
         Vector3 center = new Vector3(tamanho, tamanho);
         tamanho = tamanho / 2;
-        for (var t = 0.0f; t < (2 * Mathf.PI); t += 0.01f)
-        {
-            Vector3 ci = (new Vector3(Mathf.Cos(t) * tamanho + center.x, Mathf.Sin(t) * (tamanho/2) + center.y, center.z));
-            GL.Vertex3(ci.x, ci.y, ci.z);
-        }
+        GeraElipse(tamanho);
         GL.End();
-        GL.Begin(GL.LINES);
 
+        GL.Begin(GL.LINES);
 
         GL.Vertex(new Vector3(Mathf.Cos(0) * - tamanho + center.x, 0));
         GL.Vertex(new Vector3(Mathf.Cos(0) * - tamanho + center.x, tamanho*2));
@@ -519,4 +521,29 @@ public class GLDraw : MonoBehaviour
         //GL.Vertex(new Vector3(tamanho, tamanho + (tamanho / 2)));
         //GL.Vertex(new Vector3(tamanho, tamanho + (tamanho / 2)));
     }
+    public void GeraRosto(float tamanho)
+    {
+        GeraCirculo(tamanho, new Vector3(centerx, centery));
+        GeraCirculo(tamanho/5, new Vector3(tamanho/4+centerx, tamanho/2+centery));
+        GeraCirculo(tamanho / 5, new Vector3(tamanho / 4-(tamanho/2)+centerx, tamanho / 2+centery));
+        GeraSemicirculo(tamanho,new Vector3(centerx,centery));
+    }
+    
+    public void GeraElipse(float tamanho)
+    {
+        for (var t = 0.0f; t < (2 * Mathf.PI); t += 0.01f)
+        {
+            Vector3 ci = (new Vector3(Mathf.Cos(t) * tamanho + centerx, Mathf.Sin(t) * (tamanho / 2) + centery));
+            GL.Vertex3(ci.x, ci.y, ci.z);
+        }
+    }
+    public void GeraSemicirculo(float tamanho, Vector3 center)
+    {
+        for (var t = 0.0f; t < (Mathf.PI); t += 0.01f)
+        {
+            Vector3 ci = (new Vector3(Mathf.Cos(t) * -tamanho + center.x, Mathf.Sin(t) * (-tamanho / 2) + center.y));
+            GL.Vertex3(ci.x, ci.y, ci.z);
+        }
+    }
+    #endregion
 }
